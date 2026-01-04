@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hari Om Retreat | Calm Homestay Near Aravi Beach</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hari Om Retreat offers peaceful rooms with attached bathrooms, just one minute from Aravi Beach in Shrivardhan.">
+
+<!-- Performance: font preconnects and swap -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --brown1:#2B1B12;
+  --brown2:#3A241A;
+  --brown3:#4A2F20;
+  --brown4:#5A3A28;
+  --brown5:#6A4530;
+  --gold:#D6B370;
+  --muted:#C8B089; /* slightly brighter for contrast */
+}
+
+/* Reset and base */
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--brown1);
+  color:var(--gold);
+  line-height:1.6;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute; left: -999px; top: -999px;
+}
+.skip-link:focus {
+  left: 12px; top: 12px; background: var(--gold); color: var(--brown1);
+  padding: 8px 12px; border-radius: 8px; z-index: 1100;
+}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(43,27,18,.95);
+  backdrop-filter:saturate(120%) blur(6px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px;border-bottom:1px solid rgba(214,179,112,.2);
+}
+header img{height:46px}
+header h1{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.4rem}
+
+/* Auto-scrolling top-right label */
+.deal-strip{
+  position:sticky;
+  top:58px; /* sits below header */
+  z-index:900;
+  background:transparent;
+  padding:8px 20px 0;
+}
+.deal-wrapper{
+  position:relative;height:34px;overflow:hidden;
+  display:flex;justify-content:flex-end;
+}
+.deal{
+  background:var(--gold);color:var(--brown1);
+  padding:8px 16px;border-radius:20px;font-weight:800;white-space:nowrap;
+  box-shadow:0 6px 16px rgba(0,0,0,.25);
+  animation:dealScroll 10s linear infinite;
+}
+@keyframes dealScroll{
+  0%{transform:translateX(120%)}
+  100%{transform:translateX(-120%)}
+}
+
+/* Sections (different brown shades) */
+main{display:block}
+section{padding:80px 10vw}
+.hero{background:var(--brown2);color:var(--gold);text-align:center;min-height:70vh;display:flex;align-items:center;justify-content:center;position:relative}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:url("https://drive.google.com/uc?export=view&id=1WxVVVmN8VXN2l8RfAnNBqpvaAb5x30uR") center/cover no-repeat;
+  opacity:.22
+}
+.hero-box{position:relative;z-index:1;background:rgba(0,0,0,.45);padding:40px 32px;border-radius:20px;border:1px solid rgba(214,179,112,.25)}
+.hero h2{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:10px}
+.hero p{color:var(--muted)}
+
+.rooms{background:var(--brown3)}
+.bathrooms{background:var(--brown4)}
+.pricing{background:var(--brown5)}
+.faq{background:var(--brown2)}
+footer{background:var(--brown1)}
+
+/* Headings */
+h2{font-family:'Playfair Display',serif;color:var(--gold);text-align:center;margin-bottom:24px}
+
+/* Rooms grid and cards */
+.rooms-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.card{
+  background:#2E2A27;border-radius:22px;padding:28px;color:var(--gold);
+  box-shadow:0 8px 22px rgba(0,0,0,.35);border:1px solid rgba(214,179,112,.15)
+}
+.card h3{font-family:'Playfair Display',serif;margin-bottom:6px}
+.price{margin-bottom:10px;color:var(--muted)}
+.card img{
+  width:100%;border-radius:18px;margin-top:10px;
+  aspect-ratio: 4 / 3; object-fit: cover;
+}
+
+/* More/Less description toggle */
+.more-btn{
+  margin-top:14px;background:var(--gold);color:var(--brown1);
+  border:none;padding:10px 18px;border-radius:20px;cursor:pointer;font-weight:700
+}
+.desc{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;padding-top:0;color:var(--muted)
+}
+.card.open .desc{max-height:420px;padding-top:12px}
+
+/* Bathrooms grid reuse */
+.bathrooms .rooms-grid img{
+  width:100%;border-radius:18px;box-shadow:0 8px 22px rgba(0,0,0,.35);
+  aspect-ratio: 4 / 3; object-fit: cover;
+}
+
+/* Pricing */
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;text-align:center}
+.price-grid .pill{
+  background:#2E2A27;border-radius:20px;padding:20px;color:var(--gold);
+  box-shadow:0 8px 22px rgba(0,0,0,.35);border:1px solid rgba(214,179,112,.15)
+}
+
+/* FAQ */
+.qa{background:#2E2A27;border-radius:16px;margin-bottom:16px;padding:16px;border:1px solid rgba(214,179,112,.15)}
+.qa button{
+  background:none;border:none;width:100%;text-align:left;font-size:1rem;cursor:pointer;color:var(--gold);font-weight:700
+}
+.answer{
+  max-height:0;overflow:hidden;transition:max-height .4s ease;color:var(--muted);margin-top:0
+}
+.qa.open .answer{max-height:220px;margin-top:10px}
+
+/* Floating booking buttons */
+.float-wrap{
+  position:fixed;bottom:20px;right:20px;display:flex;gap:12px;z-index:950;flex-wrap:wrap
+}
+.float-btn{
+  padding:12px 18px;border-radius:40px;text-decoration:none;font-weight:800;
+  box-shadow:0 10px 24px rgba(0,0,0,.35);transition:.25s;display:inline-flex;align-items:center;gap:8px
+}
+.float-btn.call{background:var(--gold);color:var(--brown1)}
+.float-btn.wa{background:#25D366;color:#0b2f1a}
+.float-btn:hover{transform:translateY(-2px)}
+
+/* Focus styles for accessibility */
+button:focus,
+.more-btn:focus,
+.float-btn:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(214,179,112,.35);
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .deal { animation: none; transform: none; }
+  .desc, .answer { transition: none; }
+  .float-btn:hover { transform: none; }
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .rooms-grid,.price-grid{grid-template-columns:1fr}
+  .deal-strip{top:56px}
+}
+@media(max-width:560px){
+  .float-wrap{bottom:12px;right:12px;gap:8px}
+  .float-btn{padding:10px 14px}
+}
+</style>
+</head>
+
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <img src="https://drive.google.com/uc?export=view&id=1290PErTH2E52ZqASUoL_StzHDaWgC5yZ" alt="Hari Om Retreat Logo">
+  <h1>HARI OM RETREAT</h1>
+</header>
+
+<!-- Auto-scrolling deal label (top right to left) -->
+<div class="deal-strip" aria-hidden="false">
+  <div class="deal-wrapper">
+    <div class="deal" aria-label="Flat ten percent off">FLAT 10% OFF • FLAT 10% OFF • FLAT 10% OFF</div>
+  </div>
+</div>
+
+<main id="main">
+  <section class="hero">
+    <div class="hero-box">
+      <h2>A quiet stay by the sea</h2>
+      <p>Your calm retreat just one minute from Aravi Beach.</p>
+    </div>
+  </section>
+
+  <section class="rooms" id="rooms">
+    <h2>Rooms</h2>
+    <div class="rooms-grid">
+
+      <!-- Micro Refined Suite -->
+      <div class="card" id="card-micro">
+        <h3>Micro Refined Suite</h3>
+        <p class="price">₹2000 per night • up to 3 guests</p>
+        <img
+          loading="lazy" decoding="async"
+          src="https://drive.google.com/uc?export=view&id=1WxVVVmN8VXN2l8RfAnNBqpvaAb5x30uR"
+          alt="Micro Refined Suite room">
+        <button
+          class="more-btn"
+          onclick="toggleDesc(this)"
+          aria-expanded="false"
+          aria-controls="desc-micro">More</button>
+        <div class="desc" id="desc-micro">
+          <p>A private, thoughtfully designed suite created for calm living.</p>
+          <p>The Micro Refined Suite offers a quiet and settled atmosphere, ideal for couples and small families who value privacy, restful sleep, and a relaxed beachside stay. Its simple layout, soft lighting, and personal attached bathroom support a peaceful, comfortable experience close to the sea.</p>
+        </div>
+      </div>
+
+      <!-- Compact Private Suite -->
+      <div class="card" id="card-compact">
+        <h3>Compact Private Suite</h3>
+        <p class="price">₹1800 per night • up to 2 guests</p>
+        <img
+          loading="lazy" decoding="async"
+          src="https://drive.google.com/uc?export=view&id=1GocTtbKFXOZ3RJaUtQPKWcNlkwVCXsAD"
+          alt="Compact Private Suite room">
+        <button
+          class="more-btn"
+          onclick="toggleDesc(this)"
+          aria-expanded="false"
+          aria-controls="desc-compact">More</button>
+        <div class="desc" id="desc-compact">
+          <p>A private and comfortable room designed for mindful stays.</p>
+          <p>The Compact Private Suite is ideal for couples and solo travellers who prefer a calm, well-organised space for rest and quiet time. With a personal attached bathroom and a simple, efficient layout, it offers a peaceful base just a short walk from the beach.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bathrooms" id="bathrooms">
+    <h2>Bathrooms</h2>
+    <div class="rooms-grid">
+      <img
+        loading="lazy" decoding="async"
+        src="https://drive.google.com/uc?export=view&id=1Xayw6lc3GHcyf3mQgEt--CTRkuNkbYfL"
+        alt="Bathroom view 1">
+      <img
+        loading="lazy" decoding="async"
+        src="https://drive.google.com/uc?export=view&id=1OyFs6ARb1yjrBBMFEAdfn1JmKIrCAUK-"
+        alt="Bathroom view 2">
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <h2>Pricing</h2>
+    <div class="price-grid">
+      <div class="pill" aria-label="Micro Refined Suite price">Micro Refined Suite – ₹2000</div>
+      <div class="pill" aria-label="Compact Private Suite price">Compact Private Suite – ₹1800</div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="qa">
+      <button onclick="toggleFaq(this)" aria-expanded="false" aria-controls="ans-1">What makes this retreat different?</button>
+      <div class="answer" id="ans-1">A private, calm stay just steps from Aravi Beach, designed for guests who value quiet and privacy.</div>
+    </div>
+
+    <div class="qa">
+      <button onclick="toggleFaq(this)" aria-expanded="false" aria-controls="ans-2">Is it suitable for couples and families?</button>
+      <div class="answer" id="ans-2">Yes. Ideal for couples, small families, and mindful travellers who prefer a calm environment.</div>
+    </div>
+
+    <div class="qa">
+      <button onclick="toggleFaq(this)" aria-expanded="false" aria-controls="ans-3">How close is the beach?</button>
+      <div class="answer" id="ans-3">Aravi Beach is just a one-minute walk from the retreat.</div>
+    </div>
+
+    <div class="qa">
+      <button onclick="toggleFaq(this)" aria-expanded="false" aria-controls="ans-4">Are party stays or loud gatherings allowed?</button>
+      <div class="answer" id="ans-4">No. To maintain calm, party stays, loud gatherings, smoking, alcohol, and cooking inside rooms are not permitted.</div>
+    </div>
+  </section>
+</main>
+
+<footer>© Hari Om Retreat • 8850453113</footer>
+
+<!-- Floating booking buttons -->
+<div class="float-wrap" aria-label="Booking options">
+  <a class="float-btn call" href="tel:8850453113" aria-label="Call to book">📞 Call to book</a>
+  <a class="float-btn wa" href="https://wa.me/918850453113" aria-label="Chat on WhatsApp">💬 WhatsApp</a>
+</div>
+
+<script>
+/* Toggle room description */
+function toggleDesc(btn){
+  const card = btn.parentElement;
+  const open = card.classList.toggle('open');
+  btn.textContent = open ? 'Less' : 'More';
+  btn.setAttribute('aria-expanded', String(open));
+}
+
+/* Toggle FAQ answers */
+function toggleFaq(btn){
+  const qa = btn.parentElement;
+  const open = qa.classList.toggle('open');
+  btn.setAttribute('aria-expanded', String(open));
+}
+</script>
+
+</body>
+</html>
